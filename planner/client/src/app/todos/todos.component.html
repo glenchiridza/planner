@@ -1,0 +1,41 @@
+<div class="main">
+    <h3>Your Listing</h3>
+    
+    <div *ngIf="error">
+      <p>Error: {{ error }}</p>
+    </div>
+
+</div>
+<hr/>
+        
+  <div class="content">
+
+    <div class="form-container">
+    <form class="form" [formGroup]="todoForm" (ngSubmit)="addTodo()">
+      <input class="input" type="text" name="image_url" placeholder="Enter Image Url" formControlName="image_url"/>
+      <br />
+      <input class="input" type="text" name="name" placeholder="Enter todo" formControlName="name"/>
+      <br />
+      <input class="input" type="text" name="description"  placeholder="Enter Description"  formControlName="description"/>
+      <br />
+      <button class="submit-button" [disabled]="todoForm.invalid">SUBMIT</button>
+    </form>
+    </div>
+  
+    
+  
+    <div class="todo-containerr" *ngIf="todos">
+        <ul class="todo-ul">
+          <li *ngFor="let todo of todos">
+            <div class="todo">
+          <img src="{{todo?.image_url}}" class="small_image"/>
+            <span class="todo-name">{{ todo.name }}</span>
+            <span class="todo-description">{{ todo.description }}</span>
+  
+            <button class="delete-btn" (click)="deleteTodo(todo.id)"> DELETE TODO</button>
+          </div>
+          </li>
+        </ul>
+      </div>
+
+</div>
