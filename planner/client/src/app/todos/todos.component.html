@@ -1,6 +1,4 @@
 <div class="main">
-    <h3>Your Listing</h3>
-    
     <div *ngIf="error">
       <p>Error: {{ error }}</p>
     </div>
@@ -11,6 +9,8 @@
   <div class="content">
 
     <div class="form-container">
+
+    <h3>New Item</h3>
     <form class="form" [formGroup]="todoForm" (ngSubmit)="addTodo()">
       <input class="input" type="text" name="image_url" placeholder="Enter Image Url" formControlName="image_url"/>
       <br />
@@ -25,14 +25,16 @@
     
   
     <div class="todo-containerr" *ngIf="todos">
+
         <ul class="todo-ul">
+            <h3 style="width:100%;">Your Listing</h3>
           <li *ngFor="let todo of todos">
             <div class="todo">
           <img src="{{todo?.image_url}}" class="small_image"/>
             <span class="todo-name">{{ todo.name }}</span>
             <span class="todo-description">{{ todo.description }}</span>
   
-            <button class="delete-btn" (click)="deleteTodo(todo.id)"> DELETE TODO</button>
+            <button class="delete-btn" (click)="deleteTodo(todo.id)"> DELETE ITEM</button>
           </div>
           </li>
         </ul>

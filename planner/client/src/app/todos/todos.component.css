@@ -1,3 +1,9 @@
+.main{
+    margin-top:6.5%;
+}
+.content{
+    margin:2%;
+}
 
 .form {
     display: flex;
@@ -5,9 +11,10 @@
     align-items: center;
   }
   .form-container{
-    width:60%;
+    width:35%;
+    margin-top:1.2%;
   }
-  
+
   h3{
     font-size: 22px;
     font-weight: bold;
@@ -18,10 +25,11 @@
   .input {
     width: 100%;
     padding: 10px;
+    margin-bottom: 1.5%;
   }
   
   .submit-button {
-    width: 400px;
+    width: 105%;
     padding: 10px;
     background-color: #1976d2;
     color: white;
@@ -47,12 +55,20 @@
     border-bottom: 1px solid #e0e0e0;
   }
   .todo-containerr{
-      width:40%;
+      width:65%;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       overflow-x: scroll;
   }
+  .todo-containerr ul{
+      list-style: none;
+  }
 
+  .todo-ul{
+      display:flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+  }
   
   .todo {
     display: flex;
