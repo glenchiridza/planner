@@ -5,19 +5,24 @@ const GET_TODOS = gql`
     todos {
       id
       image_url
+      video_url
       name
       description
+      is_clip
     }
   }
 `
 
+
 const ADD_TODO = gql`
-  mutation addTodo($image_url:String!,$name: String!, $description: String!) {
-    addTodo(image_url:$image_url,name: $name, description: $description) {
+  mutation addTodo($is_clip:Boolean!,$image_url:String!,$video_url:String!,$name: String!, $description: String!) {
+    addTodo(is_clip:$is_clip,image_url:$image_url,video_url:$video_url,name: $name, description: $description) {
       id
       image_url
+      video_url
       name
       description
+      is_clip
     }
   }
 `
