@@ -1,0 +1,38 @@
+
+
+<div class="content">
+
+    <div class="form-container">
+      <ul class="todo-ul">
+        <h3 style="width:100%;">Video Playlist</h3>
+      <li *ngFor="let todo of videos">
+        <div class="todo-vid" *ngIf="todo?.is_clip">
+            <img src="{{todo?.image_url}}" class="small_image"/> 
+        <span class="todo-name">{{ todo.name }}</span>
+        <span class="todo-description">{{ todo.description }}</span>
+  </div>
+      </li>
+    </ul>
+  
+      </div>
+  
+    <div class="todo-containerr" *ngIf="videos">
+  
+      <ul class="todo-ul">
+          <h3 style="width:100%;">Watch List</h3>
+        <li *ngFor="let todo of videos">
+          <div class="todo-vid" *ngIf="todo?.is_clip">
+            <video  width="720" height="440" controls>
+              <source src="{{todo?.video_url}}">
+            </video> 
+          <span class="todo-name">{{ todo.name }}</span>
+          <span class="todo-description">{{ todo.description }}</span>
+  
+          <button class="delete-btn" (click)="deleteTodo(todo.id)"> Remove from List</button>
+        </div>
+        </li>
+      </ul>
+    </div>
+  
+  </div>
+  

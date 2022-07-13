@@ -1,0 +1,128 @@
+.main{
+    margin-top:6.5%;
+}
+.content{
+    margin:2%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .form-container{
+    width:30%;
+    margin-top:1.2%;
+  }
+
+  h3{
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  
+  .input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1.5%;
+  }
+  
+  .submit-button {
+    width: 105%;
+    padding: 10px;
+    background-color: #1976d2;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .todo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .todo-container ul {
+    list-style: none;
+    padding: 0;
+  }
+  .todo-container ul li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .todo-containerr{
+      width:70%;
+      display: flex;
+      flex-direction: row;
+      overflow-x: scroll;
+  }
+  .todo-containerr ul{
+      list-style: none;
+  }
+
+  .todo-ul{
+      display:flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+  }
+  
+  .todo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 10px;
+    max-width: 250px;
+    border:1px solid #e6e5e3;
+  }
+  .todo-vid {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 10px;
+    width:100%;
+    border:1px solid #e6e5e3;
+    color:#434343;
+  }
+  .todo-vid:hover{
+    background:#434343;
+    color:#fff;
+  }
+  
+  ul li{
+
+    list-style-type: none;
+  }
+.content{
+    width:100%;
+    display:flex;
+    flex-direction: row;
+}
+
+  .todo-name {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .todo-description {
+    max-width: 70%;
+    font-size: 14px;
+  }
+  
+  .delete-btn {
+    background-color: #f44336;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+  }
+
+  .small_image{
+      max-width:250px;
+      max-height:250px
+  }
