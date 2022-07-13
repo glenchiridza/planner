@@ -1,0 +1,23 @@
+
+
+<div class="content">
+
+  
+      <div class="todo-containerr" *ngIf="todos">
+
+        <ul class="todo-ul">
+            <h3 style="width:100%;">Today's Tasks</h3>
+          <li *ngFor="let todo of todos">
+            <div class="todo" *ngIf="todo?.is_clip ==false">
+          <img src="{{todo?.image_url}}" class="small_image"/>
+            <span class="todo-name">{{ todo.name }}</span>
+            <span class="todo-description">{{ todo.description }}</span>
+  
+            <button class="done-btn" (click)="deleteTodo(todo.id)"> DONE</button>
+          </div>
+          </li>
+        </ul>
+      </div>
+  
+  </div>
+  
