@@ -1,43 +1,93 @@
 <div class="main">
-    <div *ngIf="error">
-      <p>Error: {{ error }}</p>
-    </div>
+  <div *ngIf="error">
+    <p>Error: {{ error }}</p>
+  </div>
 
 </div>
 <hr/>
+      
+<div class="content">
+
+  <div class="form-container">
+
+  <h3>New Book Item</h3>
+  <form class="form" [formGroup]="todoForm" (ngSubmit)="addTodo()">
         
-  <div class="content">
+    <input class="input" type="text" name="video_url" placeholder="Enter Video Url" formControlName="video_url" style="display:none;"/>
+    <br />
+    <input class="input" type="checkbox" name="is_clip" placeholder="is clip" formControlName="is_clip" style="visibility: hidden;"/>
+    <br />
+    <input class="input" type="text" name="image_url" placeholder="Enter Image Url" formControlName="image_url"/>
+    <br />
+    <input class="input" type="text" name="name" placeholder="Enter todo" formControlName="name"/>
+    <br />
+    <input class="input" type="text" name="description"  placeholder="Enter Description"  formControlName="description"/>
+    <br />
+    <button class="submit-button" [disabled]="todoForm.invalid">SUBMIT</button>
+  </form>
 
-    <div class="form-container">
 
-    <h3>New Item</h3>
-    <form class="form" [formGroup]="todoForm" (ngSubmit)="addTodo()">
-      <input class="input" type="text" name="image_url" placeholder="Enter Image Url" formControlName="image_url"/>
-      <br />
-      <input class="input" type="text" name="name" placeholder="Enter todo" formControlName="name"/>
-      <br />
-      <input class="input" type="text" name="description"  placeholder="Enter Description"  formControlName="description"/>
-      <br />
-      <button class="submit-button" [disabled]="todoForm.invalid">SUBMIT</button>
-    </form>
+ 
+</div>
+  
+
+  <div class="todo-containerr" *ngIf="todos">
+
+      <ul class="todo-ul">
+          <h3 style="width:100%;">Today's Listing</h3>
+        <li *ngFor="let todo of todos">
+          <div class="todo" *ngIf="todo?.is_clip ==false">
+        <img src="{{todo?.image_url}}" class="small_image"/>
+          <span class="todo-name">{{ todo.name }}</span>
+          <span class="todo-description">{{ todo.description }}</span>
+
+          <button class="delete-btn" (click)="deleteTodo(todo.id)"> DELETE ITEM</button>
+        </div>
+        </li>
+      </ul>
     </div>
-  
-    
-  
-    <div class="todo-containerr" *ngIf="todos">
 
-        <ul class="todo-ul">
-            <h3 style="width:100%;">Your Listing</h3>
-          <li *ngFor="let todo of todos">
-            <div class="todo">
-          <img src="{{todo?.image_url}}" class="small_image"/>
-            <span class="todo-name">{{ todo.name }}</span>
-            <span class="todo-description">{{ todo.description }}</span>
-  
-            <button class="delete-btn" (click)="deleteTodo(todo.id)"> DELETE ITEM</button>
-          </div>
-          </li>
-        </ul>
-      </div>
+    
+
+</div>
+
+
+<div class="content">
+
+<div class="form-container">
+  <h3>Video</h3>
+  <form class="form" [formGroup]="todoForm" (ngSubmit)="addTodoPrac()">
+    <input class="input" type="checkbox" name="is_clip" placeholder="is clip" formControlName="is_clip" style="visibility: hidden;"/>
+    <br />
+    <input class="input" type="text" name="video_url" placeholder="Enter Video Url" formControlName="video_url"/>
+    <br />
+    <input class="input" type="text" name="image_url" placeholder="Cover Image Url" formControlName="image_url"/>
+    <br />
+    <input class="input" type="text" name="name" placeholder="Enter title" formControlName="name"/>
+    <br />
+    <input class="input" type="text" name="description"  placeholder="Enter Description"  formControlName="description"/>
+    <br />
+    <button class="submit-button" [disabled]="todoForm.invalid">SUBMIT</button>
+  </form>
+
+  </div>
+
+<div class="todo-containerr" *ngIf="todos">
+
+  <ul class="todo-ul">
+      <h3 style="width:100%;">Video Listing</h3>
+    <li *ngFor="let todo of todos">
+      <div class="todo-vid" *ngIf="todo?.is_clip">
+        <video  width="320" height="240" controls>
+          <source src="{{todo?.video_url}}">
+        </video> 
+      <span class="todo-name">{{ todo.name }}</span>
+      <span class="todo-description">{{ todo.description }}</span>
+
+      <button class="delete-btn" (click)="deleteTodo(todo.id)"> DELETE VIDEO</button>
+    </div>
+    </li>
+  </ul>
+</div>
 
 </div>
