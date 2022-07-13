@@ -1,14 +1,14 @@
 const express = require("express");
 const cors = require("cors");
 const { graphqlHTTP } = require("express-graphql");
-const { GraphQLSchema,GraphQLObjectType,GraphQLList,GraphQLNonNull,GraphQLInt,GraphQLString } = require("graphql");
+const { GraphQLSchema,GraphQLObjectType,GraphQLList,GraphQLNonNull,GraphQLInt,GraphQLString, GraphQLBoolean } = require("graphql");
 
 const app = express();
 
 
 const Todos = [
-    { id: 1, image_url:"../assets/bao.jpeg",name: 'Kids show', description: 'Let the children watch adventure movies'},
-    { id: 2, image_url:"../assets/securico.jpg",name: 'Learn Security', description: 'Read more about security 6PM-7PM'},
+    { id: 1,is_clip:false, image_url:"../assets/bao.jpeg",video_url:"../assets/securico.jpg",name: 'Kids show', description: 'Let the children watch adventure movies'},
+    { id: 2,is_clip:false, image_url:"../assets/securico.jpg",video_url:"../assets/securico.jpg",name: 'Learn Security', description: 'Read more about security 6PM-7PM'},
 
   ]
   
@@ -17,7 +17,9 @@ const Todos = [
       description: 'This is a todo',
       fields: () => ({
         id: { type: new GraphQLNonNull(GraphQLInt) },
+        is_clip: { type: new GraphQLNonNull(GraphQLBoolean) },
         image_url: {type: new GraphQLNonNull(GraphQLString)},
+        video_url: {type: new GraphQLNonNull(GraphQLString)},
         name: { type: new GraphQLNonNull(GraphQLString) },
         description: { type: new GraphQLNonNull(GraphQLString) },
       })
@@ -57,9 +59,15 @@ const Todos = [
             type: TodoType,
             description: 'Add a new Todo',
             args: {
+              is_clip: {
+                type: new GraphQLNonNull(GraphQLBoolean)
+            },
                 image_url: {
                     type: new GraphQLNonNull(GraphQLString)
                 },
+                video_url: {
+                  type: new GraphQLNonNull(GraphQLString)
+              },
                 name: {
                     type: new GraphQLNonNull(GraphQLString)
                 },
@@ -70,7 +78,9 @@ const Todos = [
             resolve: (root, args) => {
                 const newTodo = {
                     id: Todos.length + 1,
+                    is_clip:args.is_clip,
                     image_url:args.image_url,
+                    video_url:args.video_url,
                     name: args.name,
                     description: args.description,
                 }
