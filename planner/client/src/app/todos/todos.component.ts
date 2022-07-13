@@ -12,8 +12,12 @@ export class TodosComponent implements OnInit {
   todos: any[] = [];
   error: any;
 
+  placeholder_video = "../assets/The.Wedding.Ringer.2020.720p.BluRay.x264.YIFY.mp4";
+
   todoForm = new FormGroup({
+    is_clip: new FormControl('',),
     image_url: new FormControl('',Validators.required),
+    video_url: new FormControl(''),
     name: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required)
   });
@@ -23,7 +27,34 @@ export class TodosComponent implements OnInit {
     this.apollo.mutate({
       mutation: ADD_TODO,
       variables: {
+        is_clip:false,
         image_url:this.todoForm.value.image_url,
+        video_url:this.placeholder_video,
+        name: this.todoForm.value.name,
+        description: this.todoForm.value.description,
+      },
+      refetchQueries: [{
+        query: GET_TODOS
+      }]
+    }).subscribe(({data}: any) => {
+      this.todos = data.addTodo;
+      this.todoForm.reset();
+    }
+    , (error) => {
+      this.error = error;
+    }
+    );
+
+  }
+
+  addTodoPrac() {
+    // apollo graphql query to add todo
+    this.apollo.mutate({
+      mutation: ADD_TODO,
+      variables: {
+        is_clip:true,
+        image_url:this.todoForm.value.image_url,
+        video_url:this.todoForm.value.video_url,
         name: this.todoForm.value.name,
         description: this.todoForm.value.description,
       },
