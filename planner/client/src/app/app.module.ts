@@ -6,11 +6,15 @@ import { AppComponent } from './app.component';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { TodosComponent } from './todos/todos.component';
+import { VideosComponent } from './videos/videos.component';
+import { TasksComponent } from './tasks/tasks.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodosComponent
+    TodosComponent,
+    VideosComponent,
+    TasksComponent
   ],
   imports: [
     FormsModule,
